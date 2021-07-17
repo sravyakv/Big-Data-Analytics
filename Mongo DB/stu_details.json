@@ -1,0 +1,5 @@
+{"_id":{"$oid":"606806c222df117efc9c8612"},"roll no.":"1BM18CS044","age":"20","Contact no.":"9118101234","email id":"sravya.cs18@bmsce.ac.in"}
+{"_id":{"$oid":"606806e322df117efc9c8613"},"roll no.":"1BM18CS039","age":"21","Contact no.":"8008939393","email id":"shruthi.cs18@bmsce.ac.in"}
+{"_id":{"$oid":"6068070422df117efc9c8614"},"roll no.":"1BM18CS026","age":"20","Contact no.":"9440093939","email id":"abhi.cs18@bmsce.ac.in"}
+{"_id":{"$oid":"6068072822df117efc9c8615"},"roll no.":"10","age":"21","Contact no.":"9686378187","email id":"changed_rishi@gmail.com","name":"CDE"}
+{"_id":{"$oid":"60680ab322df117efc9c8616"},"roll no.":"11","name":"FEM","age":"21","Contact no.":"9686378187","email id":"rishi.cs18@bmsce.ac.in"}
