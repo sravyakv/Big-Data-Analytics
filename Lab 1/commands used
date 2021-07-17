@@ -1,0 +1,55 @@
+cd cassandra/apache_cassandra-3.11.0/
+cd bin
+cqlsh
+
+//create keyspace
+cqlsh> CREATE KEYSPACE STUDENT WITH REPLICATION = { 'class':'SimpleStrategy', 'replication_factor': 1 };
+
+//describe keyspace
+cqlsh> DESCRIBE KEYSPACE;
+
+//use keyspace
+cqlsh> use STUDENT;
+
+//create table
+cqlsh:student> create table project_details ( project_id int, project_name text, project_domain text, project_team_size int, project_start_date timestamp, project_end_date timestamp, primary key(project_id, project_name));
+
+//describe table
+cqlsh:student> describe tables;
+
+//describe table project_details
+cqlsh:student> describe table project_details;
+
+//insert values into table
+cqlsh:student> begin batch insert into project_details ( project_id, project_name, project_domain, project_end_date, project_start_date, project_team_size) values(1, 'project one', 'domain one', '2020-03-09', '2019-03-09', 4) apply batch;
+cqlsh:student> begin batch insert into project_details ( project_id, project_name, project_domain, project_end_date, project_start_date, project_team_size) values(2, 'project two', 'domain two', '2020-04-10', '2019-04-10', 4) apply batch;
+cqlsh:student> begin batch insert into project_details ( project_id, project_name, project_domain, project_end_date, project_start_date, project_team_size) values(3, 'project three', 'domain three', '2019-06-11', '2018-06-11', 4) apply batch;
+cqlsh:student> begin batch insert into project_details ( project_id, project_name, project_domain, project_end_date, project_start_date, project_team_size) values(4, 'project four', 'domain four', '2019-06-12', '2018-06-12', 4) apply batch;
+
+//display table values
+cqlsh:student> select * from project_details;
+
+cqlsh:student> select * from project_details where project_id IN (1,2);
+
+cqlsh:student> select project_id, project_name, project_domain from project_details limit 2;
+
+cqlsh:student> select project_id, project_name, project_domain as "project important details" from project_details;
+
+//update details
+cqlsh:student> update project_details set project_domain = 'updated domain name' where project_id = 2 and project_name = 'project two';
+cqlsh:student> select * from project_details;
+
+//delete row
+cqlsh:student> delete from project_details where project_id = 3 and project_name = 'project three';
+cqlsh:student> select * from project_details;
+
+cqlsh:student> select project_start_date from project_details where project_id = 4 and project_name = 'project four';
+
+
+//delete a particular record in a row
+cqlsh:student> delete project_start_date from project_details where project_id = 4 and project_name = 'project four';
+cqlsh:student> select * from project_details;
+
+//create index
+cqlsh:student> create index if not exists project_domain_index on project_details(project_domain);
+cqlsh:student> select * from project_details where project_domain = 'domain one';
